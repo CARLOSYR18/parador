@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080C18">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Icono -->
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="RH"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#00E5FF"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:background="@drawable/badge_cyan"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Nombre -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REMIGIO HUARCAYA"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:letterSpacing="0.1"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <!-- Cargo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESARROLLADOR ANDROID"
+            android:textSize="11sp"
+            android:textColor="#00E5FF"
+            android:letterSpacing="0.3"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Línea separadora -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#00E5FF33"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Info cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="32dp">
+
+            <!-- Email -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/stat_card"
+                android:padding="14dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✉"
+                    android:textSize="16sp"
+                    android:textColor="#00E5FF"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="rshuarcaya@gmail.com"
+                    android:textSize="13sp"
+                    android:textColor="#AABBCC"/>
+            </LinearLayout>
+
+            <!-- Empresa -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/stat_card"
+                android:padding="14dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏢"
+                    android:textSize="16sp"
+                    android:textColor="#00E5FF"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agencia Parador"
+                    android:textSize="13sp"
+                    android:textColor="#AABBCC"/>
+            </LinearLayout>
+
+            <!-- GitHub -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/stat_card"
+                android:padding="14dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⌨"
+                    android:textSize="16sp"
+                    android:textColor="#00E5FF"
+                    android:layout_marginEnd="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="github.com/remigiohuarcaya"
+                    android:textSize="13sp"
+                    android:textColor="#AABBCC"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Botón -->
+        <Button
+            android:id="@+id/btnContactar"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="CONTACTAR"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#080C18"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:backgroundTint="#00E5FF"
+            app:cornerRadius="14dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
