@@ -13,7 +13,7 @@
         android:id="@+id/txtTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AGENCIA DE VIAJES PA2323git add .RADOR"
+        android:text="AGENCIA DE VIas33asAJES PA2323git add .RADOR"
         android:textSize="20sp"
         android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
