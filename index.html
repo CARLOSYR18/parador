@@ -1,0 +1,3781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTP | Universidad Tecnológica del Perú</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ========== HEADER ========== */
+        .header {
+            display: flex;
+            align-items: stretch;
+            height: 70px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Logo area - white background */
+        .header-logo {
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            background: #fff;
+            min-width: 200px;
+            gap: 10px;
+        }
+
+        .logo-utp {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-utp-box {
+            background: #E4002B;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            padding: 6px 12px;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .logo-utp-text {
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.3;
+        }
+
+        /* Nav area - dark background */
+        .header-nav {
+            display: flex;
+            align-items: center;
+            background: #1a1a1a;
+            flex: 1;
+            padding: 0 20px;
+            gap: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 22px;
+            color: #fff;
+            font-size: 0.92rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+            gap: 6px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-item .arrow {
+            font-size: 0.55rem;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* Accesos universitarios */
+        .header-accesos {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 0 28px;
+            border-left: 1px solid #ddd;
+            cursor: pointer;
+            gap: 8px;
+            white-space: nowrap;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .header-accesos .arrow {
+            font-size: 0.55rem;
+            opacity: 0.6;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 70px);
+            min-height: 550px;
+            max-height: 780px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        /* Background image placeholder - simulated with gradient */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 100%),
+                linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 30%, #d4d4d4 50%, #b8b8b8 70%, #e0e0e0 100%);
+            background-size: cover;
+        }
+
+        /* Simulated campus interior with CSS */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 60px,
+                    rgba(255,255,255,0.3) 60px,
+                    rgba(255,255,255,0.3) 62px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(255,255,255,0.15) 80px,
+                    rgba(255,255,255,0.15) 82px
+                );
+            opacity: 0.4;
+        }
+
+        /* Student silhouette area */
+        .hero-student {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-60%);
+            width: 500px;
+            height: 90%;
+            background: linear-gradient(180deg, rgba(180,180,180,0.3) 0%, rgba(140,140,140,0.5) 100%);
+            border-radius: 50% 50% 0 0;
+            filter: blur(2px);
+            opacity: 0.3;
+        }
+
+        /* Play button */
+        .hero-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: #E4002B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 30px rgba(228, 0, 43, 0.4);
+        }
+
+        .hero-play:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 40px rgba(228, 0, 43, 0.6);
+        }
+
+        .hero-play::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 24px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 4px;
+        }
+
+        /* Pulse animation on play */
+        .hero-play::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 3px solid rgba(228, 0, 43, 0.4);
+            animation: playPulse 2s ease-out infinite;
+        }
+
+        @keyframes playPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Red CTA box - "SER SIEMPRE EMPLEABLE" */
+        .hero-cta-box {
+            position: absolute;
+            right: 80px;
+            bottom: 100px;
+            z-index: 10;
+        }
+
+        .cta-red {
+            background: #E4002B;
+            padding: 24px 32px;
+            min-width: 280px;
+        }
+
+        .cta-red h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: #fff;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-white {
+            background: #fff;
+            padding: 18px 32px;
+            min-width: 280px;
+        }
+
+        .cta-white p {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* ========== CARRERAS BAR ========== */
+        .carreras-bar-label {
+            background: #fff;
+            padding: 18px 0 10px;
+        }
+
+        .carreras-bar-label p {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .carreras-bar {
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 24px 0;
+        }
+
+        .carreras-icons {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .carrera-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            flex: 1;
+            max-width: 100px;
+        }
+
+        .carrera-icon-circle {
+            width: 64px;
+            height: 64px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .carrera-icon-circle:hover {
+            background: #E4002B;
+            transform: scale(1.1);
+        }
+
+        .carrera-icon-circle svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .carrera-icon-item span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: center;
+            color: #555;
+            line-height: 1.2;
+        }
+
+        /* ========== FLOATING BUTTONS ========== */
+        .floating-btns {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .float-btn {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .float-btn:hover {
+            transform: translateX(-4px);
+            filter: brightness(1.1);
+        }
+
+        .float-btn.red { background: #E4002B; }
+        .float-btn.green { background: #25D366; }
+        .float-btn.gray { background: #555; }
+
+        .float-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+
+        /* ========== ADMISION SECTION ========== */
+        .admision-section {
+            background: #4A0014;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0 80px;
+        }
+
+        /* Decorative pixel squares pattern */
+        .admision-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 26px,
+                    rgba(100,0,20,0.4) 26px,
+                    rgba(100,0,20,0.4) 28px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 26px,
+                    rgba(100,0,20,0.4) 26px,
+                    rgba(100,0,20,0.4) 28px
+                );
+            opacity: 0.5;
+        }
+
+        .admision-section::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 100px;
+            width: 250px;
+            height: 120px;
+            background-image:
+                radial-gradient(circle, rgba(228,0,43,0.5) 3px, transparent 3px);
+            background-size: 16px 16px;
+            opacity: 0.6;
+        }
+
+        .admision-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Left side */
+        .admision-left {
+            position: relative;
+        }
+
+        .admision-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        /* Dot indicator row */
+        .admision-dots {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .admision-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #E4002B;
+        }
+
+        .admision-dots span.active {
+            background: #fff;
+        }
+
+        /* Photo collage */
+        .photo-collage {
+            position: relative;
+            width: 100%;
+            height: 380px;
+        }
+
+        .photo-card {
+            position: absolute;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            background: #666;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Simulated photos with gradients */
+        .photo-card-1 {
+            width: 260px;
+            height: 200px;
+            top: 20px;
+            left: 40px;
+            z-index: 2;
+            background: linear-gradient(135deg, #5a4a3a 0%, #8a7a6a 50%, #6a5a4a 100%);
+        }
+
+        .photo-card-2 {
+            width: 220px;
+            height: 200px;
+            bottom: 0;
+            left: 0;
+            z-index: 3;
+            background: linear-gradient(135deg, #4a5a6a 0%, #7a8a7a 50%, #5a6a5a 100%);
+        }
+
+        .photo-card-3 {
+            width: 240px;
+            height: 220px;
+            bottom: 0;
+            left: 200px;
+            z-index: 4;
+            background: linear-gradient(135deg, #eee 0%, #ccc 50%, #ddd 100%);
+        }
+
+        /* Decorative floating squares */
+        .deco-square {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 1;
+        }
+
+        .deco-square.sq1 { width: 12px; height: 12px; top: 180px; left: 10px; border-color: rgba(255,255,255,0.5); }
+        .deco-square.sq2 { width: 14px; height: 14px; top: 140px; left: 80px; border-color: #E4002B; }
+        .deco-square.sq3 { width: 10px; height: 10px; top: 100px; right: 80px; border-color: rgba(255,255,255,0.4); }
+        .deco-square.sq4 { width: 12px; height: 12px; bottom: 100px; left: 260px; border-color: rgba(255,255,255,0.4); }
+        .deco-square.sq5 { width: 8px; height: 8px; bottom: 50px; left: 230px; border-color: #E4002B; }
+        .deco-square.sq6 { width: 6px; height: 6px; top: 120px; right: 40px; background: #00c9a7; border: none; }
+
+        /* Right side - Form */
+        .admision-form-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 36px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+
+        /* Radio buttons row */
+        .form-radios {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .form-radios label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .form-radios input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .form-radios input[type="radio"]:checked {
+            border-color: #333;
+        }
+
+        .form-radios input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        /* Form fields grid */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-field {
+            position: relative;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1.5px solid #ccc;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            color: #333;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-field input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .form-field input:focus {
+            border-color: #E4002B;
+        }
+
+        /* Checkbox */
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            margin-top: 2px;
+        }
+
+        .form-checkbox input[type="checkbox"]:checked {
+            background: #E4002B;
+            border-color: #E4002B;
+        }
+
+        .form-checkbox input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .form-checkbox span {
+            font-size: 0.88rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .form-checkbox a {
+            color: #E4002B;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .form-obligatorios {
+            font-size: 0.82rem;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        /* Form footer */
+        .form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-step {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .form-step strong {
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+
+        .form-step span {
+            font-weight: 400;
+            color: #999;
+        }
+
+        .btn-siguiente {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #E8758A 0%, #D4637A 100%);
+            color: #fff;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-siguiente:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.35);
+        }
+
+        .btn-siguiente .arrow-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .btn-siguiente:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        /* ========== MODALIDADES SECTION ========== */
+        .modalidades-section {
+            background: #f2f2f2;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle dot pattern background */
+        .modalidades-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .modalidades-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Left side */
+        .modalidades-left {
+            position: relative;
+        }
+
+        .modalidades-title-bar {
+            display: flex;
+            align-items: stretch;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .modalidades-accent {
+            width: 6px;
+            background: #00BFA6;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .modalidades-title-bar h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .modalidades-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.75;
+            margin-bottom: 50px;
+            max-width: 480px;
+        }
+
+        /* Photo with students */
+        .modalidades-photo {
+            position: relative;
+            width: 420px;
+            max-width: 100%;
+        }
+
+        .modalidades-photo-img {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            background: #ccc;
+        }
+
+        .modalidades-photo-img svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Decorative squares near photo */
+        .mod-deco {
+            position: absolute;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+        .mod-deco.d1 { width: 12px; height: 12px; top: -15px; right: -10px; border-color: rgba(0,0,0,0.15); }
+        .mod-deco.d2 { width: 10px; height: 10px; bottom: 40px; left: -20px; border-color: #E4002B; opacity: 0.5; }
+        .mod-deco.d3 { width: 14px; height: 14px; bottom: -10px; left: 40px; background: rgba(228,0,43,0.15); border: none; }
+        .mod-deco.d4 { width: 20px; height: 20px; bottom: -15px; left: 60px; background: rgba(228,0,43,0.1); border: none; }
+        .mod-deco.d5 { width: 8px; height: 8px; bottom: 30px; right: 50px; background: #00BFA6; border: none; }
+
+        /* Right side - Accordions */
+        .modalidades-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .accordion-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .accordion-card.active {
+            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            cursor: pointer;
+            gap: 18px;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: rgba(0,0,0,0.015);
+        }
+
+        .accordion-icon {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .accordion-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .accordion-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            flex: 1;
+        }
+
+        .accordion-arrow {
+            width: 40px;
+            height: 40px;
+            background: #E4002B;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .accordion-card.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-arrow svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        /* Accordion body */
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .accordion-card.active .accordion-body {
+            max-height: 600px;
+        }
+
+        .accordion-content {
+            padding: 0 24px 28px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Schedule item inside accordion */
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 28px 0;
+        }
+
+        .schedule-item + .schedule-item {
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .schedule-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .schedule-info p {
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Calendar mini widget */
+        .mini-calendar {
+            width: 230px;
+            flex-shrink: 0;
+        }
+
+        .cal-spiral {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: -2px;
+        }
+
+        .cal-spiral span {
+            width: 3px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 0 0 2px 2px;
+        }
+
+        .cal-top-bar {
+            height: 6px;
+            background: #E4002B;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .cal-grid {
+            background: #fff;
+            border: 1px solid #eee;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            padding: 8px;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            margin-bottom: 6px;
+        }
+
+        .cal-days span {
+            text-align: center;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #999;
+            padding: 2px 0;
+        }
+
+        .cal-days span.weekend {
+            color: #ccc;
+        }
+
+        .cal-blocks {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+        }
+
+        .cal-block {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+        }
+
+        .cal-block.active {
+            background: #E4002B;
+        }
+
+        .cal-block.active-moon {
+            background: #E4002B;
+            position: relative;
+        }
+
+        .cal-block.active-moon::after {
+            content: '🌙';
+            font-size: 0.6rem;
+        }
+
+        .cal-block.active::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: #E4002B;
+            border-radius: 4px;
+        }
+
+        .cal-block.inactive {
+            background: #eee;
+        }
+
+        /* ========== TESTIMONIO VIDEO SECTION ========== */
+        .testimonio-section {
+            background: #C8102E;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+
+        /* Red squares pattern overlay */
+        .testimonio-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                /* Large semi-transparent squares */
+                linear-gradient(45deg, rgba(180,10,30,0.5) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(180,10,30,0.5) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(180,10,30,0.5) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(180,10,30,0.5) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            opacity: 0.3;
+        }
+
+        /* Second layer - smaller offset squares */
+        .testimonio-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(200,16,46,0.4) 28px,
+                    rgba(200,16,46,0.4) 30px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(200,16,46,0.4) 28px,
+                    rgba(200,16,46,0.4) 30px
+                );
+            opacity: 0.5;
+        }
+
+        /* Third layer - scattered dark red rectangles */
+        .testimonio-squares {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .testimonio-squares .sq {
+            position: absolute;
+            background: rgba(150, 5, 20, 0.35);
+            border-radius: 2px;
+        }
+
+        /* Diagonal decorative lines */
+        .testimonio-section::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: 200px;
+            width: 300px;
+            height: 300px;
+            border: 2px solid rgba(255,255,255,0.04);
+            transform: rotate(45deg);
+        }
+
+        .testimonio-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonio-left {}
+
+        .testimonio-title-bar {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .testimonio-accent {
+            width: 6px;
+            background: #00BFA6;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .testimonio-title-bar h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .testimonio-desc {
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        /* Phone mockup */
+        .testimonio-right {
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 340px;
+            background: #111;
+            border-radius: 32px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .phone-notch {
+            width: 120px;
+            height: 28px;
+            background: #111;
+            border-radius: 0 0 16px 16px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            background: #1a1a2e;
+            aspect-ratio: 9/16;
+        }
+
+        /* Video background simulation */
+        .phone-video-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .phone-video-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Play button on phone */
+        .phone-play {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            border: 3px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.3);
+            opacity: 1;
+        }
+
+        .phone-play:hover {
+            background: rgba(228, 0, 43, 0.6);
+            border-color: #fff;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .phone-play::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 3px;
+        }
+
+        /* Info overlay at bottom of phone */
+        .phone-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 80px 18px 20px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+            z-index: 4;
+        }
+
+        .phone-info-group {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Group photo above main content */
+        .phone-group-photo {
+            position: absolute;
+            top: 6%;
+            left: 8%;
+            right: 8%;
+            height: 30%;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 3;
+            border: 2px solid rgba(0, 191, 166, 0.5);
+        }
+
+        .phone-group-photo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .phone-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .phone-role {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .phone-quote {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.85);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* TikTok-like side icons */
+        .phone-side-icons {
+            position: absolute;
+            right: 12px;
+            bottom: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 5;
+        }
+
+        .side-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+        }
+
+        .side-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        .side-icon-count {
+            font-size: 0.6rem;
+            color: #fff;
+            text-align: center;
+            margin-top: -4px;
+        }
+
+        /* ========== 5 MOTIVOS SECTION ========== */
+        .motivos-section {
+            background: #E8F5F0;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Giant UTP watermark top-right */
+        .motivos-watermark {
+            position: absolute;
+            top: 30px;
+            right: -20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 14rem;
+            color: rgba(0,0,0,0.04);
+            letter-spacing: -8px;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .motivos-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Title area */
+        .motivos-header {
+            margin-bottom: 50px;
+        }
+
+        .motivos-title-row {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .motivos-title-accent {
+            width: 6px;
+            background: #E4002B;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .motivos-title-content {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .motivos-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 4.5rem;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .motivos-title-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .motivos-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 550px;
+            padding-left: 22px;
+        }
+
+        /* Cards grid */
+        .motivos-carousel-wrapper {
+            position: relative;
+        }
+
+        .motivos-cards {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 10px;
+        }
+
+        .motivos-cards::-webkit-scrollbar { display: none; }
+
+        .motivo-card {
+            min-width: 290px;
+            max-width: 290px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .motivo-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .motivo-card-img {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivo-card-img svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Dark gradient overlay */
+        .motivo-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 100px 22px 20px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            color: #fff;
+        }
+
+        .motivo-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 14px;
+        }
+
+        .motivo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .motivo-card-overlay h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+
+        /* Bottom badge/label on card */
+        .motivo-card-badge {
+            position: absolute;
+            bottom: 16px;
+            left: 22px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .motivo-card-badge .bar {
+            width: 20px;
+            height: 24px;
+            border-radius: 2px;
+        }
+
+        .motivo-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: #E4002B;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .motivo-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .motivo-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        /* Navigation arrows */
+        .motivos-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .motivos-arrow {
+            width: 44px;
+            height: 44px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.3s;
+        }
+
+        .motivos-arrow:hover {
+            border-color: #E4002B;
+        }
+
+        .motivos-arrow svg {
+            width: 20px;
+            height: 20px;
+            fill: #999;
+        }
+
+        .motivos-arrow:hover svg {
+            fill: #E4002B;
+        }
+
+        /* ========== CAMPUS / SEDES CAROUSEL ========== */
+        .campus-section {
+            background: #fff;
+            padding: 60px 0 80px;
+            position: relative;
+        }
+
+        .campus-top {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .campus-title-group {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+        }
+
+        .campus-title-accent {
+            width: 6px;
+            background: #E4002B;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .campus-title-group h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            line-height: 1.15;
+        }
+
+        .campus-subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 22px;
+        }
+
+        .btn-ubica {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            border: 2px solid #E4002B;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #E4002B;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-ubica:hover {
+            background: #E4002B;
+            color: #fff;
+        }
+
+        /* Carousel wrapper */
+        .campus-carousel-wrapper {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .campus-carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 10px;
+        }
+
+        .campus-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Campus card */
+        .campus-card {
+            min-width: 380px;
+            max-width: 380px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .campus-card-img {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .campus-card-img svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Dark gradient overlay at bottom */
+        .campus-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 24px 20px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            color: #fff;
+        }
+
+        .campus-card-overlay h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .campus-card-overlay p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .campus-card-overlay a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .campus-card-overlay a:hover {
+            color: #E4002B;
+        }
+
+        /* UTP logo badge on building */
+        .utp-badge {
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            background: #fff;
+            padding: 4px 6px;
+            border-radius: 3px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .utp-badge span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 0.55rem;
+            border-radius: 2px;
+        }
+
+        .utp-badge span.red { background: #E4002B; color: #fff; }
+        .utp-badge span.dark { background: #1a1a1a; color: #fff; }
+
+        /* Carousel arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+            background: none;
+            border: none;
+        }
+
+        .carousel-arrow svg {
+            width: 36px;
+            height: 36px;
+            fill: #E4002B;
+            transition: transform 0.3s;
+        }
+
+        .carousel-arrow:hover svg {
+            transform: scale(1.15);
+        }
+
+        .carousel-arrow.left {
+            left: 0;
+        }
+
+        .carousel-arrow.right {
+            right: 0;
+        }
+
+        /* Dots navigation */
+        .campus-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .campus-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .campus-dot.active {
+            background: #E4002B;
+        }
+
+        /* ========== ALUMNOS SECTION ========== */
+        .alumnos-section {
+            background: #fff;
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alumnos-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .alumnos-title-row {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .alumnos-accent {
+            width: 6px;
+            background: #E4002B;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .alumnos-title-row h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .alumnos-desc {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 550px;
+            margin-bottom: 50px;
+        }
+
+        /* Cards grid */
+        .alumnos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .alumno-card {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: #f5f5f5;
+        }
+
+        .alumno-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+        }
+
+        .alumno-card-img {
+            width: 100%;
+            height: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alumno-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .alumno-card:hover .alumno-card-img img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay gradient */
+        .alumno-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 80px 24px 24px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%);
+            color: #fff;
+        }
+
+        .alumno-card-overlay h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+
+        .alumno-card-overlay .alumno-carrera {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .alumno-card-overlay .alumno-quote {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* UTP badge on card */
+        .alumno-utp-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(228, 0, 43, 0.9);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        /* Social/action icon */
+        .alumno-action {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            transition: background 0.3s;
+        }
+
+        .alumno-action:hover {
+            background: rgba(228, 0, 43, 0.8);
+        }
+
+        .alumno-action svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .alumnos-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .alumnos-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .alumno-card-img { height: 380px; }
+        }
+
+        /* ========== INTERCORP SECTION ========== */
+        .intercorp-section {
+            background: #f0faf6;
+            padding: 60px 0 70px;
+        }
+
+        .intercorp-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .intercorp-title-row {
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .intercorp-accent {
+            width: 6px;
+            background: #E4002B;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .intercorp-title-row h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .intercorp-desc {
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        /* Logos row */
+        .intercorp-logos {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 10px;
+        }
+
+        .intercorp-logos::-webkit-scrollbar { display: none; }
+
+        .intercorp-logo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0.85;
+        }
+
+        .intercorp-logo:hover {
+            transform: scale(1.08);
+            opacity: 1;
+        }
+
+        .intercorp-logo svg {
+            max-height: 40px;
+            width: auto;
+        }
+
+        /* Dots */
+        .intercorp-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .intercorp-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .intercorp-dot.active {
+            background: #E4002B;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .nav-item { padding: 0 14px; font-size: 0.82rem; }
+            .hero-cta-box { right: 40px; bottom: 80px; }
+            .cta-red h2 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 768px) {
+            .header { height: auto; flex-wrap: wrap; }
+            .header-nav { display: none; }
+            .header-accesos { display: none; }
+            .header-logo { height: 60px; }
+            .hero { height: 60vh; min-height: 400px; }
+            .hero-cta-box { right: 16px; bottom: 60px; }
+            .cta-red { padding: 18px 22px; min-width: auto; }
+            .cta-red h2 { font-size: 1.3rem; }
+            .cta-white { padding: 14px 22px; min-width: auto; }
+            .carreras-icons { flex-wrap: wrap; justify-content: center; }
+            .carrera-icon-item { max-width: 70px; }
+            .carrera-icon-circle { width: 52px; height: 52px; }
+            .floating-btns { display: none; }
+            .admision-inner { grid-template-columns: 1fr; gap: 40px; }
+            .admision-title { font-size: 1.6rem; }
+            .photo-collage { height: 280px; }
+            .photo-card-1 { width: 200px; height: 160px; }
+            .photo-card-2 { width: 170px; height: 160px; }
+            .photo-card-3 { width: 190px; height: 180px; left: 150px; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-radios { gap: 16px; }
+            .btn-siguiente { padding: 14px 36px; font-size: 0.95rem; }
+            .modalidades-inner { grid-template-columns: 1fr; }
+            .modalidades-photo { width: 100%; }
+            .mini-calendar { width: 180px; }
+            .schedule-item { grid-template-columns: 1fr; }
+            .campus-card { min-width: 280px; max-width: 280px; }
+            .campus-card-img { height: 250px; }
+            .campus-top { flex-direction: column; gap: 16px; }
+            .motivo-card { min-width: 260px; max-width: 260px; }
+            .motivo-card-img { height: 320px; }
+            .motivos-watermark { font-size: 6rem; top: 10px; right: -10px; }
+            .motivos-number { font-size: 3rem; }
+            .testimonio-inner { grid-template-columns: 1fr; text-align: center; }
+            .testimonio-title-bar { justify-content: center; }
+            .testimonio-desc { margin: 0 auto; }
+            .phone-mockup { width: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <!-- Logo Area (white) -->
+        <div class="header-logo">
+            <div class="logo-utp">
+                <div class="logo-utp-box">UTP</div>
+                <div class="logo-utp-text">
+                    Universidad<br>Tecnológica<br>del Perú
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation (dark) -->
+        <nav class="header-nav">
+            <div class="nav-menu">
+                <div class="nav-item">
+                    Modalidades de estudio
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-item">
+                    Carreras
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-item">
+                    Admisión
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-item">
+                    Vida UTP
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-item">
+                    Campus
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="nav-item">
+                    Postgrado
+                </div>
+            </div>
+        </nav>
+
+        <!-- Accesos (white) -->
+        <div class="header-accesos">
+            Accesos<br>universitarios
+            <span class="arrow">▼</span>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-student"></div>
+
+        <!-- Play Button -->
+        <div class="hero-play" id="playBtn"></div>
+
+        <!-- CTA Box -->
+        <div class="hero-cta-box">
+            <div class="cta-red">
+                <h2>SER<br>SIEMPRE<br>EMPLEABLE</h2>
+            </div>
+            <div class="cta-white">
+                <p>Es aprender a crear<br>tu marca personal<br>y profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CARRERAS BAR ========== -->
+    <div class="carreras-bar-label">
+        <p>Conoce nuestras carreras en:</p>
+    </div>
+
+    <div class="carreras-bar">
+        <div class="carreras-icons">
+            <!-- Ingeniería -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <span>Ingeniería</span>
+            </div>
+
+            <!-- Gestión y Negocios -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+                </div>
+                <span>Gestión y Negocios</span>
+            </div>
+
+            <!-- Derecho -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                </div>
+                <span>Derecho y Ciencias Sociales</span>
+            </div>
+
+            <!-- Humanidades -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <span>Humanidades</span>
+            </div>
+
+            <!-- Comunicaciones -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                </div>
+                <span>Comunicaciones</span>
+            </div>
+
+            <!-- Ciencias de la Salud -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>
+                </div>
+                <span>Ciencias de la Salud</span>
+            </div>
+
+            <!-- Arquitectura -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                </div>
+                <span>Arquitectura y Diseño</span>
+            </div>
+
+            <!-- Ciencias Empresariales -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M16 6V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H2v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6h-6zm-6-2h4v2h-4V4zm10 15H4V8h16v11z"/></svg>
+                </div>
+                <span>Ciencias Empresariales</span>
+            </div>
+
+            <!-- Educación -->
+            <div class="carrera-icon-item">
+                <div class="carrera-icon-circle">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <span>Psicología</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== ADMISION SECTION ========== -->
+    <section class="admision-section">
+        <div class="admision-inner">
+            <!-- Left Side -->
+            <div class="admision-left">
+                <h2 class="admision-title">Miles de estudiantes ya<br>construyen<br>sus sueños con nosotros</h2>
+
+                <!-- Dot indicators -->
+                <div class="admision-dots">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Photo collage -->
+                <div class="photo-collage">
+                    <!-- Decorative squares -->
+                    <div class="deco-square sq1"></div>
+                    <div class="deco-square sq2"></div>
+                    <div class="deco-square sq3"></div>
+                    <div class="deco-square sq4"></div>
+                    <div class="deco-square sq5"></div>
+                    <div class="deco-square sq6"></div>
+
+                    <!-- Photo 1 - students group top -->
+                    <div class="photo-card photo-card-1">
+                        <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="260" height="200" fill="#5a4a3a"/>
+                            <circle cx="90" cy="70" r="22" fill="#d4a574"/>
+                            <circle cx="140" cy="65" r="22" fill="#c49464"/>
+                            <circle cx="190" cy="72" r="22" fill="#d4a574"/>
+                            <rect x="65" y="90" width="50" height="60" rx="8" fill="#3a5a8a"/>
+                            <rect x="115" y="85" width="50" height="65" rx="8" fill="#2a2a2a"/>
+                            <rect x="165" y="90" width="50" height="60" rx="8" fill="#4a6a4a"/>
+                            <rect x="0" y="170" width="260" height="30" fill="rgba(0,0,0,0.2)"/>
+                        </svg>
+                    </div>
+
+                    <!-- Photo 2 - family bottom left -->
+                    <div class="photo-card photo-card-2">
+                        <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="220" height="200" fill="#4a5a6a"/>
+                            <circle cx="70" cy="65" r="22" fill="#d4a574"/>
+                            <circle cx="150" cy="60" r="22" fill="#c49464"/>
+                            <circle cx="110" cy="100" r="16" fill="#d4a574"/>
+                            <rect x="45" y="85" width="50" height="55" rx="8" fill="#5a3a3a"/>
+                            <rect x="125" y="80" width="50" height="60" rx="8" fill="#3a4a5a"/>
+                            <rect x="85" y="115" width="45" height="40" rx="6" fill="#e8e8e8"/>
+                            <rect x="30" y="140" width="160" height="60" fill="rgba(0,0,0,0.15)"/>
+                        </svg>
+                    </div>
+
+                    <!-- Photo 3 - professional woman bottom right -->
+                    <div class="photo-card photo-card-3">
+                        <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="240" height="220" fill="#e8e8e8"/>
+                            <circle cx="120" cy="65" r="28" fill="#c49464"/>
+                            <rect x="80" y="90" width="80" height="100" rx="10" fill="#fff"/>
+                            <rect x="90" y="95" width="60" height="8" rx="2" fill="#e0e0e0"/>
+                            <circle cx="40" cy="150" r="25" fill="#ccc"/>
+                            <circle cx="200" cy="160" r="20" fill="#bbb"/>
+                            <rect x="0" y="190" width="240" height="30" fill="rgba(0,0,0,0.08)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="admision-form-card">
+                <!-- Radio buttons -->
+                <div class="form-radios">
+                    <label>
+                        <input type="radio" name="modalidad" value="presencial" checked>
+                        Presencial
+                    </label>
+                    <label>
+                        <input type="radio" name="modalidad" value="semipresencial">
+                        Semi<br>Presencial
+                    </label>
+                    <label>
+                        <input type="radio" name="modalidad" value="virtual">
+                        100%<br>Virtual
+                    </label>
+                </div>
+
+                <!-- Form fields -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <input type="text" placeholder="Nombre*">
+                    </div>
+                    <div class="form-field">
+                        <input type="text" placeholder="Apellido*">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <input type="tel" placeholder="Celular*">
+                    </div>
+                    <div class="form-field">
+                        <input type="text" placeholder="DNI*">
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-field">
+                        <input type="email" placeholder="Correo electrónico*">
+                    </div>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="form-checkbox">
+                    <input type="checkbox" id="privacidad">
+                    <span>Declaro expresamente haber leído y aceptado las <a href="#">Políticas de Privacidad.</a></span>
+                </div>
+
+                <p class="form-obligatorios">(*) Campos obligatorios</p>
+
+                <!-- Footer -->
+                <div class="form-footer">
+                    <div class="form-step">
+                        <strong>1</strong><span>/2</span>
+                    </div>
+                    <button class="btn-siguiente" id="btnSiguiente">
+                        Siguiente <span class="arrow-icon">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== MODALIDADES SECTION ========== -->
+    <section class="modalidades-section">
+        <div class="modalidades-inner">
+            <!-- Left -->
+            <div class="modalidades-left">
+                <div class="modalidades-title-bar">
+                    <div class="modalidades-accent"></div>
+                    <h2>Estudia a tu ritmo, en la<br>modalidad que elijas</h2>
+                </div>
+                <p class="modalidades-desc">
+                    Contamos con modalidades flexibles y horarios pensados para ti. Ya sea que prefieras asistir al campus, combinar clases o estudiar 100% virtual, encontrarás una opción que encaje con tu estilo de vida.
+                </p>
+
+                <!-- Photo -->
+                <div class="modalidades-photo">
+                    <div class="mod-deco d1"></div>
+                    <div class="mod-deco d2"></div>
+                    <div class="mod-deco d3"></div>
+                    <div class="mod-deco d4"></div>
+                    <div class="mod-deco d5"></div>
+                    <div class="modalidades-photo-img">
+                        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background room -->
+                            <rect width="420" height="300" fill="#e8ddd0"/>
+                            <!-- Bookshelf -->
+                            <rect x="10" y="20" width="160" height="140" rx="4" fill="#c49464"/>
+                            <rect x="20" y="30" width="30" height="40" rx="2" fill="#8B4513"/>
+                            <rect x="55" y="35" width="25" height="35" rx="2" fill="#A0522D"/>
+                            <rect x="85" y="28" width="28" height="42" rx="2" fill="#6B4226"/>
+                            <rect x="120" y="32" width="35" height="38" rx="2" fill="#8B6914"/>
+                            <rect x="20" y="80" width="35" height="35" rx="2" fill="#CD853F"/>
+                            <rect x="60" y="85" width="30" height="30" rx="2" fill="#A0522D"/>
+                            <rect x="95" y="78" width="32" height="37" rx="2" fill="#8B4513"/>
+                            <!-- Student 1 - male with laptop -->
+                            <circle cx="200" cy="100" r="35" fill="#c49464"/>
+                            <rect x="170" y="60" width="60" height="45" rx="8" fill="#2a2a2a"/>
+                            <circle cx="200" cy="75" r="6" fill="#c49464"/>
+                            <rect x="155" y="130" width="90" height="80" rx="10" fill="#2d5a3d"/>
+                            <!-- Laptop -->
+                            <rect x="140" y="180" width="90" height="55" rx="4" fill="#ddd"/>
+                            <rect x="145" y="185" width="80" height="40" rx="2" fill="#a8d8ea"/>
+                            <rect x="130" y="235" width="110" height="6" rx="3" fill="#bbb"/>
+                            <!-- Student 2 - female -->
+                            <circle cx="330" cy="120" r="32" fill="#8B6914"/>
+                            <rect x="310" y="80" width="40" height="50" rx="6" fill="#1a1a1a"/>
+                            <rect x="298" y="150" width="65" height="80" rx="10" fill="#c44569"/>
+                            <!-- Book in hand -->
+                            <rect x="310" y="195" width="35" height="45" rx="3" fill="#2a5a8a"/>
+                            <!-- Floor -->
+                            <rect x="0" y="260" width="420" height="40" fill="rgba(0,0,0,0.06)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right - Accordions -->
+            <div class="modalidades-right">
+                <!-- PRESENCIAL -->
+                <div class="accordion-card" data-accordion="presencial">
+                    <div class="accordion-header" onclick="toggleAccordion('presencial')">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="8" width="20" height="40" rx="2" fill="#4A90D9"/>
+                                <rect x="16" y="12" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="24" y="12" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="16" y="20" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="24" y="20" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="16" y="28" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="24" y="28" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="16" y="36" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="24" y="36" width="5" height="5" rx="1" fill="#a8d8ea"/>
+                                <rect x="28" y="15" width="16" height="33" rx="2" fill="#6BAFDF"/>
+                                <rect x="31" y="19" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="37" y="19" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="31" y="26" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="37" y="26" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="31" y="33" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="37" y="33" width="4" height="4" rx="1" fill="#a8d8ea"/>
+                                <rect x="5" y="48" width="50" height="4" rx="2" fill="#888"/>
+                                <circle cx="10" cy="52" r="3" fill="#43a047"/>
+                                <circle cx="18" cy="52" r="2" fill="#66bb6a"/>
+                                <circle cx="42" cy="52" r="3" fill="#43a047"/>
+                                <circle cx="48" cy="52" r="2" fill="#66bb6a"/>
+                            </svg>
+                        </div>
+                        <h3>Presencial</h3>
+                        <div class="accordion-arrow">
+                            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Presencial Día</h4>
+                                    <p>Lunes a sábado de 8:00 am a 6:00 pm</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block inactive"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Presencial noche</h4>
+                                    <p>Lunes a viernes de 6:30 pm a 10:30 pm<br>Sábados de 2:00 pm a 10:30 pm</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block inactive"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEMIPRESENCIAL -->
+                <div class="accordion-card" data-accordion="semipresencial">
+                    <div class="accordion-header" onclick="toggleAccordion('semipresencial')">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="12" width="40" height="28" rx="3" fill="#888"/>
+                                <rect x="13" y="15" width="34" height="22" rx="1" fill="#e0e0e0"/>
+                                <rect x="22" y="40" width="16" height="4" rx="1" fill="#999"/>
+                                <rect x="16" y="44" width="28" height="3" rx="1.5" fill="#aaa"/>
+                                <!-- Graduation cap on screen -->
+                                <rect x="24" y="20" width="14" height="3" rx="1" fill="#7B1FA2"/>
+                                <polygon points="31,17 24,21 31,25 38,21" fill="#9C27B0"/>
+                                <line x1="31" y1="25" x2="31" y2="32" stroke="#7B1FA2" stroke-width="1.5"/>
+                                <rect x="28" y="31" width="6" height="3" rx="1" fill="#7B1FA2"/>
+                            </svg>
+                        </div>
+                        <h3>Semipresencial</h3>
+                        <div class="accordion-arrow">
+                            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Semipresencial Día</h4>
+                                    <p>Clases virtuales de lunes a viernes<br>Laboratorios presenciales los sábados de 8:00 am a 1:00 pm</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block" style="background:#7B1FA2;"></div>
+                                            <div class="cal-block" style="background:#7B1FA2;"></div>
+                                            <div class="cal-block" style="background:#7B1FA2;"></div>
+                                            <div class="cal-block" style="background:#7B1FA2;"></div>
+                                            <div class="cal-block" style="background:#7B1FA2;"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Semipresencial Noche</h4>
+                                    <p>Clases virtuales de lunes a viernes de 7:00 pm a 10:00 pm<br>Laboratorios presenciales los sábados de 2:00 pm a 7:00 pm</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 100% VIRTUAL -->
+                <div class="accordion-card" data-accordion="virtual">
+                    <div class="accordion-header" onclick="toggleAccordion('virtual')">
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="8" y="10" width="44" height="28" rx="3" fill="#666"/>
+                                <rect x="11" y="13" width="38" height="22" rx="1" fill="#e8e8e8"/>
+                                <!-- Colorful bars on screen -->
+                                <rect x="15" y="17" width="6" height="14" rx="1" fill="#E4002B"/>
+                                <rect x="23" y="20" width="6" height="11" rx="1" fill="#F7941D"/>
+                                <rect x="31" y="15" width="6" height="16" rx="1" fill="#43a047"/>
+                                <rect x="39" y="22" width="6" height="9" rx="1" fill="#4A90D9"/>
+                                <rect x="20" y="38" width="20" height="4" rx="1" fill="#999"/>
+                                <rect x="14" y="42" width="32" height="3" rx="1.5" fill="#aaa"/>
+                                <!-- Wifi icon -->
+                                <circle cx="30" cy="50" r="2" fill="#4A90D9"/>
+                                <path d="M24 48 a8 8 0 0 1 12 0" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+                                <path d="M21 46 a12 12 0 0 1 18 0" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3>100% Virtual</h3>
+                        <div class="accordion-arrow">
+                            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                        </div>
+                    </div>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Virtual Día</h4>
+                                    <p>Lunes a viernes de 8:00 am a 6:00 pm<br>Todas las clases quedan grabadas</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar" style="background:#4A90D9;"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block inactive"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <h4>Virtual Noche</h4>
+                                    <p>Lunes a viernes de 7:00 pm a 10:30 pm<br>Sábados de 2:00 pm a 6:00 pm<br>Todas las clases quedan grabadas</p>
+                                </div>
+                                <div class="mini-calendar">
+                                    <div class="cal-spiral">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-top-bar" style="background:#4A90D9;"></div>
+                                    <div class="cal-grid">
+                                        <div class="cal-days">
+                                            <span>LUN</span><span>MAR</span><span>MIE</span><span>JUE</span><span>VIE</span><span class="weekend">SAB</span><span class="weekend">DOM</span>
+                                        </div>
+                                        <div class="cal-blocks">
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block active-moon"></div>
+                                            <div class="cal-block" style="background:#4A90D9;"></div>
+                                            <div class="cal-block inactive"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========== CAMPUS / SEDES ========== -->
+    <section class="campus-section">
+        <div class="campus-top">
+            <div>
+                <div class="campus-title-group">
+                    <div class="campus-title-accent"></div>
+                    <h2>Estudia desde donde estés</h2>
+                </div>
+                <p class="campus-subtitle">15 campus a nivel nacional o modalidad 100% virtual.</p>
+            </div>
+            <button class="btn-ubica">Ubica cada campus</button>
+        </div>
+
+        <div class="campus-carousel-wrapper">
+            <button class="carousel-arrow left" onclick="scrollCampus(-1)">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+
+            <div class="campus-carousel" id="campusCarousel">
+                <!-- Lima Centro -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b8d4e8"/><stop offset="100%" stop-color="#dce8f0"/></linearGradient>
+                            </defs>
+                            <rect width="380" height="320" fill="url(#sky1)"/>
+                            <rect x="0" y="180" width="380" height="140" fill="#d4c9b8"/>
+                            <rect x="40" y="50" width="100" height="200" rx="3" fill="#7a8a9a"/>
+                            <rect x="45" y="55" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="67" y="55" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="89" y="55" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="45" y="75" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="67" y="75" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="89" y="75" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="45" y="95" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="67" y="95" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="89" y="95" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="45" y="115" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="67" y="115" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="89" y="115" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="45" y="135" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="67" y="135" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="89" y="135" width="18" height="14" rx="1" fill="#a8d8ea"/>
+                            <rect x="150" y="80" width="80" height="170" rx="3" fill="#8899aa"/>
+                            <rect x="155" y="85" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="173" y="85" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="191" y="85" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="155" y="102" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="173" y="102" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="191" y="102" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="155" y="119" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="173" y="119" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="191" y="119" width="14" height="12" rx="1" fill="#a8d8ea"/>
+                            <rect x="240" y="120" width="90" height="130" rx="3" fill="#99aabb"/>
+                            <rect x="245" y="125" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <rect x="261" y="125" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <rect x="277" y="125" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <rect x="245" y="140" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <rect x="261" y="140" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <rect x="277" y="140" width="12" height="10" rx="1" fill="#a8d8ea"/>
+                            <line x1="30" y1="45" x2="30" y2="250" stroke="#E4002B" stroke-width="2"/>
+                            <circle cx="30" cy="45" r="3" fill="#E4002B"/>
+                        </svg>
+                        <div class="utp-badge" style="top:35%;left:15%;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="campus-card-overlay">
+                            <h3>Lima Centro</h3>
+                            <p>Jr. Hernán Velarde 289, Lima</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lima Norte -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#c8d8e8"/>
+                            <rect x="0" y="200" width="380" height="120" fill="#ccc4b8"/>
+                            <rect x="80" y="30" width="120" height="220" rx="3" fill="#5a8aaa"/>
+                            <rect x="85" y="35" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="112" y="35" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="139" y="35" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="85" y="56" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="112" y="56" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="139" y="56" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="85" y="77" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="112" y="77" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="139" y="77" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="85" y="98" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="112" y="98" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="139" y="98" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="85" y="119" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="112" y="119" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="139" y="119" width="22" height="16" rx="1" fill="#a8d8ea"/>
+                            <rect x="210" y="90" width="100" height="160" rx="3" fill="#6a9aba"/>
+                            <polygon points="200,30 140,90 260,90" fill="#4a7a9a"/>
+                            <rect x="30" y="160" width="50" height="90" rx="2" fill="#baa"/>
+                            <rect x="35" y="170" width="14" height="12" rx="1" fill="#dcc"/>
+                            <rect x="55" y="170" width="14" height="12" rx="1" fill="#dcc"/>
+                        </svg>
+                        <div class="utp-badge" style="top:30%;left:35%;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="campus-card-overlay">
+                            <h3>Lima Norte</h3>
+                            <p>Av. Alfredo Mendiola 6377, Los Olivos</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lima Sur -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#b8cce0"/>
+                            <rect x="0" y="210" width="380" height="110" fill="#c8c0b4"/>
+                            <rect x="50" y="50" width="130" height="200" rx="3" fill="#5080a0"/>
+                            <rect x="55" y="55" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="83" y="55" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="111" y="55" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="55" y="78" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="83" y="78" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="111" y="78" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="55" y="101" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="83" y="101" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="111" y="101" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="200" y="60" width="130" height="190" rx="3" fill="#5888a8"/>
+                            <rect x="205" y="65" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="233" y="65" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="261" y="65" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="205" y="88" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="233" y="88" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="261" y="88" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="205" y="111" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="233" y="111" width="24" height="18" rx="1" fill="#88c8e8"/>
+                            <rect x="261" y="111" width="24" height="18" rx="1" fill="#88c8e8"/>
+                        </svg>
+                        <div class="utp-badge" style="top:28%;left:22%;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="utp-badge" style="top:28%;right:22%;left:auto;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="campus-card-overlay">
+                            <h3>Lima Sur</h3>
+                            <p>Carretera Panamericana Sur Km16, Villa El Salvador</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lima Este - Ate -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#c0d0e0"/>
+                            <rect x="0" y="200" width="380" height="120" fill="#d0c8bc"/>
+                            <rect x="100" y="40" width="160" height="210" rx="4" fill="#6090b0"/>
+                            <rect x="108" y="48" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="132" y="48" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="156" y="48" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="180" y="48" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="108" y="68" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="132" y="68" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="156" y="68" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="180" y="68" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="108" y="88" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="132" y="88" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="156" y="88" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="180" y="88" width="20" height="15" rx="1" fill="#90c8e0"/>
+                            <rect x="30" y="140" width="60" height="110" rx="2" fill="#c0a898"/>
+                            <rect x="290" y="130" width="60" height="120" rx="2" fill="#b8a090"/>
+                        </svg>
+                        <div class="utp-badge" style="top:30%;left:35%;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="campus-card-overlay">
+                            <h3>Lima Este - Ate</h3>
+                            <p>Carretera Central Km 11.6, Ate</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arequipa -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#a8c0d8"/>
+                            <rect x="0" y="190" width="380" height="130" fill="#d8d0c4"/>
+                            <rect x="60" y="60" width="110" height="190" rx="3" fill="#708898"/>
+                            <rect x="65" y="65" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="90" y="65" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="115" y="65" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="65" y="85" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="90" y="85" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="115" y="85" width="20" height="15" rx="1" fill="#a0d0e8"/>
+                            <rect x="190" y="90" width="120" height="160" rx="3" fill="#6888a0"/>
+                            <rect x="195" y="95" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                            <rect x="218" y="95" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                            <rect x="241" y="95" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                            <rect x="195" y="114" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                            <rect x="218" y="114" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                            <rect x="241" y="114" width="18" height="14" rx="1" fill="#a0d0e8"/>
+                        </svg>
+                        <div class="utp-badge" style="top:32%;left:20%;">
+                            <span class="red">U</span><span class="dark">T</span><span class="red">P</span>
+                        </div>
+                        <div class="campus-card-overlay">
+                            <h3>Arequipa</h3>
+                            <p>Av. Tacna y Arica 160, Arequipa</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chiclayo -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#b0c8d8"/>
+                            <rect x="0" y="200" width="380" height="120" fill="#d4ccbc"/>
+                            <rect x="90" y="55" width="200" height="195" rx="4" fill="#5a88a8"/>
+                            <rect x="98" y="62" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="120" y="62" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="142" y="62" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="164" y="62" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="186" y="62" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="98" y="80" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="120" y="80" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="142" y="80" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="164" y="80" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="186" y="80" width="16" height="12" rx="1" fill="#88c0e0"/>
+                            <rect x="20" y="160" width="60" height="90" rx="2" fill="#c8b8a8"/>
+                            <rect x="310" y="140" width="50" height="110" rx="2" fill="#baa898"/>
+                        </svg>
+                        <div class="campus-card-overlay">
+                            <h3>Chiclayo</h3>
+                            <p>Av. José Leonardo Ortiz, Chiclayo</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trujillo -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#a0b8d0"/>
+                            <rect x="0" y="195" width="380" height="125" fill="#ccc4b8"/>
+                            <rect x="70" y="50" width="120" height="200" rx="3" fill="#5888a0"/>
+                            <rect x="78" y="58" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="102" y="58" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="126" y="58" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="78" y="78" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="102" y="78" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="126" y="78" width="20" height="14" rx="1" fill="#90c0d8"/>
+                            <rect x="210" y="80" width="100" height="170" rx="3" fill="#6898b0"/>
+                            <rect x="218" y="88" width="16" height="12" rx="1" fill="#90c0d8"/>
+                            <rect x="240" y="88" width="16" height="12" rx="1" fill="#90c0d8"/>
+                            <rect x="262" y="88" width="16" height="12" rx="1" fill="#90c0d8"/>
+                        </svg>
+                        <div class="campus-card-overlay">
+                            <h3>Trujillo</h3>
+                            <p>Av. Mansiche, Trujillo</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piura -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#b8d0e0"/>
+                            <rect x="0" y="205" width="380" height="115" fill="#d0c8b8"/>
+                            <rect x="120" y="40" width="140" height="215" rx="4" fill="#5898b8"/>
+                            <rect x="128" y="48" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="150" y="48" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="172" y="48" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="128" y="68" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="150" y="68" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="172" y="68" width="18" height="14" rx="1" fill="#88c8e8"/>
+                            <rect x="40" y="150" width="70" height="100" rx="2" fill="#c0b0a0"/>
+                            <rect x="280" y="160" width="60" height="90" rx="2" fill="#b8a898"/>
+                        </svg>
+                        <div class="campus-card-overlay">
+                            <h3>Piura</h3>
+                            <p>Av. Vice Cdra 1, Piura</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iquitos -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#a8c8d8"/>
+                            <rect x="0" y="200" width="380" height="120" fill="#c8c0b0"/>
+                            <rect x="100" y="70" width="180" height="180" rx="3" fill="#6090a8"/>
+                            <rect x="108" y="78" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="132" y="78" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="156" y="78" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="108" y="98" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="132" y="98" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="156" y="98" width="18" height="14" rx="1" fill="#90c8e0"/>
+                            <rect x="20" y="170" width="65" height="80" rx="2" fill="#b0a090"/>
+                            <rect x="300" y="155" width="55" height="95" rx="2" fill="#a89888"/>
+                        </svg>
+                        <div class="campus-card-overlay">
+                            <h3>Iquitos</h3>
+                            <p>Av. José A. Quiñones, Iquitos</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Huancayo -->
+                <div class="campus-card">
+                    <div class="campus-card-img">
+                        <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="380" height="320" fill="#b0c0d8"/>
+                            <rect x="0" y="195" width="380" height="125" fill="#d0c4b8"/>
+                            <rect x="80" y="45" width="100" height="205" rx="3" fill="#5878a0"/>
+                            <rect x="88" y="53" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="108" y="53" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="128" y="53" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="88" y="70" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="108" y="70" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="128" y="70" width="16" height="12" rx="1" fill="#88b8d8"/>
+                            <rect x="200" y="80" width="110" height="170" rx="3" fill="#6888a8"/>
+                        </svg>
+                        <div class="campus-card-overlay">
+                            <h3>Huancayo</h3>
+                            <p>Av. Circunvalación 449, Huancayo</p>
+                            <a href="#">Ver ubicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-arrow right" onclick="scrollCampus(1)">
+                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </button>
+        </div>
+
+        <!-- Dots -->
+        <div class="campus-dots" id="campusDots"></div>
+    </section>
+
+    <!-- ========== TESTIMONIO VIDEO SECTION ========== -->
+    <section class="testimonio-section">
+        <div class="testimonio-pattern"></div>
+        <div class="testimonio-squares">
+            <!-- Row 1 - top area -->
+            <div class="sq" style="width:18px;height:18px;top:20px;left:60px;"></div>
+            <div class="sq" style="width:14px;height:14px;top:25px;left:85px;"></div>
+            <div class="sq" style="width:20px;height:20px;top:15px;left:110px;"></div>
+            <div class="sq" style="width:12px;height:12px;top:22px;left:140px;"></div>
+            <div class="sq" style="width:16px;height:16px;top:18px;left:165px;"></div>
+            <div class="sq" style="width:18px;height:18px;top:10px;left:200px;"></div>
+            <div class="sq" style="width:14px;height:14px;top:30px;left:230px;"></div>
+            <div class="sq" style="width:20px;height:20px;top:12px;left:260px;"></div>
+            <div class="sq" style="width:16px;height:16px;top:24px;left:300px;"></div>
+            <div class="sq" style="width:12px;height:12px;top:14px;left:340px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:18px;height:18px;top:20px;left:375px;"></div>
+            <div class="sq" style="width:14px;height:14px;top:28px;left:410px;"></div>
+            <!-- Row 2 -->
+            <div class="sq" style="width:16px;height:16px;top:48px;left:70px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:20px;height:20px;top:44px;left:100px;"></div>
+            <div class="sq" style="width:14px;height:14px;top:50px;left:135px;"></div>
+            <div class="sq" style="width:18px;height:18px;top:42px;left:170px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:12px;height:12px;top:52px;left:210px;"></div>
+            <div class="sq" style="width:20px;height:20px;top:40px;left:250px;"></div>
+            <div class="sq" style="width:16px;height:16px;top:48px;left:290px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:14px;height:14px;top:44px;left:330px;"></div>
+            <!-- Scattered across middle/right -->
+            <div class="sq" style="width:22px;height:22px;top:80px;right:300px;background:rgba(170,8,22,0.4);"></div>
+            <div class="sq" style="width:16px;height:16px;top:75px;right:260px;"></div>
+            <div class="sq" style="width:18px;height:18px;top:85px;right:220px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:14px;height:14px;top:70px;right:180px;"></div>
+            <div class="sq" style="width:20px;height:20px;top:90px;right:140px;"></div>
+            <div class="sq" style="width:12px;height:12px;top:78px;right:100px;background:rgba(190,10,25,0.5);"></div>
+            <!-- More scattered -->
+            <div class="sq" style="width:16px;height:16px;top:110px;left:120px;"></div>
+            <div class="sq" style="width:20px;height:20px;top:105px;left:160px;background:rgba(170,8,22,0.4);"></div>
+            <div class="sq" style="width:14px;height:14px;top:115px;left:200px;"></div>
+            <div class="sq" style="width:18px;height:18px;top:108px;left:250px;"></div>
+            <div class="sq" style="width:22px;height:22px;bottom:60px;left:80px;background:rgba(190,10,25,0.5);"></div>
+            <div class="sq" style="width:16px;height:16px;bottom:50px;left:130px;"></div>
+            <div class="sq" style="width:20px;height:20px;bottom:70px;left:180px;background:rgba(170,8,22,0.4);"></div>
+            <div class="sq" style="width:14px;height:14px;bottom:55px;left:230px;"></div>
+            <div class="sq" style="width:18px;height:18px;bottom:40px;right:200px;"></div>
+            <div class="sq" style="width:12px;height:12px;bottom:65px;right:150px;background:rgba(190,10,25,0.5);"></div>
+        </div>
+        <div class="testimonio-inner">
+            <!-- Left -->
+            <div class="testimonio-left">
+                <div class="testimonio-title-bar">
+                    <div class="testimonio-accent"></div>
+                    <h2>Una decisión que cambió su vida y la de muchos</h2>
+                </div>
+                <p class="testimonio-desc">
+                    Comprometida con mejorar la educación, Yasmin destacó como estudiante de Psicología. Su esfuerzo y visión la llevaron a vivir una experiencia académica internacional en una de las universidades más prestigiosas del mundo. ¡Su experiencia puede ser el inicio de la tuya!
+                </p>
+            </div>
+
+            <!-- Right - Phone mockup -->
+            <div class="testimonio-right">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <!-- Real video -->
+                        <div class="phone-video-bg">
+                            <video id="testimonioVideo" src="video.mp4" playsinline loop muted
+                                style="width:100%;height:100%;object-fit:cover;"></video>
+                        </div>
+
+                        <!-- Play button -->
+                        <div class="phone-play" id="phonePlayBtn"></div>
+
+                        <!-- TikTok side icons -->
+                        <div class="phone-side-icons">
+                            <div>
+                                <div class="side-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                </div>
+                                <div class="side-icon-count">2.4K</div>
+                            </div>
+                            <div>
+                                <div class="side-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                                </div>
+                                <div class="side-icon-count">328</div>
+                            </div>
+                            <div>
+                                <div class="side-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                                </div>
+                                <div class="side-icon-count">512</div>
+                            </div>
+                            <div>
+                                <div class="side-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+                                </div>
+                                <div class="side-icon-count">89</div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom info -->
+                        <div class="phone-info">
+                            <div class="phone-name">Yasmin Campos</div>
+                            <div class="phone-role">Egresada de psicología</div>
+                            <div class="phone-quote">"En la universidad me interesé por mejorar la educación de jóvenes y adultos. Por ello busqué oportunidades de trabajo..."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 5 MOTIVOS SECTION ========== -->
+    <section class="motivos-section">
+        <div class="motivos-watermark">UTP</div>
+        <div class="motivos-inner">
+            <!-- Header -->
+            <div class="motivos-header">
+                <div class="motivos-title-row">
+                    <div class="motivos-title-accent"></div>
+                    <div class="motivos-title-content">
+                        <span class="motivos-number">5</span>
+                        <span class="motivos-title-text">motivos por qué<br>estudiar en la UTP</span>
+                    </div>
+                </div>
+                <p class="motivos-desc">
+                    Con un modelo educativo práctico, convenios con empresas líderes y programas de empleabilidad, en la UTP te formamos para destacar profesionalmente.
+                </p>
+            </div>
+
+            <!-- Cards -->
+            <div class="motivos-carousel-wrapper">
+                <div class="motivos-cards" id="motivosCarousel">
+
+                    <!-- Card 1 - Educación moderna -->
+                    <div class="motivo-card">
+                        <div class="motivo-card-img">
+                            <svg viewBox="0 0 290 380" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="290" height="380" fill="#e8e0d8"/>
+                                <!-- Lab scene -->
+                                <rect x="0" y="0" width="290" height="380" fill="#ddd8d0"/>
+                                <rect x="10" y="280" width="270" height="100" fill="rgba(0,0,0,0.05)"/>
+                                <!-- People in lab coats -->
+                                <circle cx="80" cy="140" r="22" fill="#c49464"/>
+                                <rect x="58" y="160" width="44" height="60" rx="6" fill="#fff"/>
+                                <circle cx="160" cy="135" r="22" fill="#d4a574"/>
+                                <rect x="138" y="155" width="44" height="60" rx="6" fill="#fff"/>
+                                <circle cx="230" cy="145" r="20" fill="#c49464"/>
+                                <rect x="210" y="163" width="40" height="55" rx="6" fill="#fff"/>
+                                <!-- Lab equipment -->
+                                <rect x="40" y="240" width="60" height="40" rx="4" fill="#bbb"/>
+                                <rect x="120" y="230" width="50" height="50" rx="4" fill="#aaa"/>
+                                <circle cx="145" cy="250" r="12" fill="#ddd"/>
+                                <rect x="200" y="245" width="40" height="30" rx="3" fill="#999"/>
+                                <!-- AI Learning badge -->
+                                <rect x="15" y="20" width="130" height="36" rx="6" fill="rgba(255,255,255,0.9)"/>
+                                <rect x="20" y="25" width="22" height="12" rx="2" fill="#E4002B"/>
+                                <text x="24" y="34" font-family="Montserrat,sans-serif" font-weight="900" font-size="7" fill="#fff">UTP</text>
+                                <text x="48" y="34" font-family="Montserrat,sans-serif" font-weight="800" font-size="9" fill="#00BFA6">AI Learning</text>
+                                <text x="48" y="48" font-family="Roboto,sans-serif" font-size="6" fill="#666">Inteligencia Artificial incorporada en tu aprendizaje</text>
+                            </svg>
+                            <div class="motivo-card-overlay">
+                                <div class="motivo-icon">
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="24" cy="12" r="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M16 28 L24 18 L32 28" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M12 36 L20 26" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M28 26 L36 36" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="12" cy="38" r="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="24" cy="42" r="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="36" cy="38" r="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3>Educación moderna con acreditación internacional</h3>
+                            </div>
+                            <!-- Bottom bar chart decoration -->
+                            <div class="motivo-card-badge">
+                                <div class="bar" style="background:#E4002B;height:20px;width:6px;"></div>
+                                <div class="bar" style="background:#E4002B;height:28px;width:6px;"></div>
+                                <div class="bar" style="background:#E4002B;height:16px;width:6px;"></div>
+                                <div class="bar" style="background:#4A90D9;height:24px;width:6px;"></div>
+                            </div>
+                            <div class="motivo-btn">
+                                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 - Horarios flexibles -->
+                    <div class="motivo-card">
+                        <div class="motivo-card-img">
+                            <svg viewBox="0 0 290 380" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="290" height="380" fill="#e0d8c8"/>
+                                <!-- Living room / study scene -->
+                                <rect x="0" y="250" width="290" height="130" fill="#d8d0c0"/>
+                                <!-- Sofa -->
+                                <rect x="20" y="180" width="250" height="80" rx="12" fill="#c8b898"/>
+                                <rect x="30" y="170" width="70" height="90" rx="8" fill="#b8a888"/>
+                                <rect x="190" y="170" width="70" height="90" rx="8" fill="#b8a888"/>
+                                <!-- Two students studying -->
+                                <circle cx="110" cy="120" r="24" fill="#c49464"/>
+                                <rect x="88" y="142" width="44" height="50" rx="8" fill="#1a3a5a"/>
+                                <circle cx="190" cy="115" r="24" fill="#8B6914"/>
+                                <rect x="168" y="137" width="44" height="50" rx="8" fill="#2a4a3a"/>
+                                <!-- Window light -->
+                                <rect x="60" y="10" width="170" height="80" rx="4" fill="rgba(255,255,255,0.4)"/>
+                                <line x1="145" y1="10" x2="145" y2="90" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                                <line x1="60" y1="50" x2="230" y2="50" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                            </svg>
+                            <div class="motivo-card-overlay">
+                                <div class="motivo-icon">
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="24" cy="24" r="16" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M24 14 L24 24 L32 28" fill="none" stroke="#00BFA6" stroke-width="2.5" stroke-linecap="round"/>
+                                        <circle cx="24" cy="24" r="2" fill="#00BFA6"/>
+                                        <path d="M24 6 L24 9" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M24 39 L24 42" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M6 24 L9 24" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M39 24 L42 24" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3>Horarios flexibles en todas las modalidades</h3>
+                            </div>
+                            <div class="motivo-btn">
+                                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 - Empleabilidad -->
+                    <div class="motivo-card">
+                        <div class="motivo-card-img">
+                            <svg viewBox="0 0 290 380" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="290" height="380" fill="#e4dcd0"/>
+                                <!-- Office meeting scene -->
+                                <rect x="0" y="240" width="290" height="140" fill="#d0c8b8"/>
+                                <!-- Professional woman -->
+                                <circle cx="145" cy="120" r="30" fill="#8B6914"/>
+                                <rect x="115" y="148" width="60" height="70" rx="10" fill="#e8ddd0"/>
+                                <rect x="125" y="155" width="40" height="5" rx="2" fill="#d0c0a8"/>
+                                <!-- Two people in background -->
+                                <circle cx="60" cy="160" r="18" fill="#c49464"/>
+                                <rect x="42" y="176" width="36" height="44" rx="6" fill="#2a3a5a"/>
+                                <circle cx="235" cy="155" r="18" fill="#d4a574"/>
+                                <rect x="217" y="171" width="36" height="44" rx="6" fill="#3a4a3a"/>
+                                <!-- Table -->
+                                <rect x="30" y="220" width="230" height="6" rx="2" fill="#a89878"/>
+                            </svg>
+                            <div class="motivo-card-overlay">
+                                <div class="motivo-icon">
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="20" cy="16" r="6" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M10 36 C10 28 16 24 20 24 C24 24 30 28 30 36" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="34" cy="14" r="5" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M30 24 C33 22 38 24 40 30" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="20" cy="6" r="2" fill="#00BFA6"/>
+                                        <path d="M16 4 L20 6 L24 4" fill="none" stroke="#00BFA6" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <h3>Programas para asegurar tu empleabilidad</h3>
+                            </div>
+                            <div class="motivo-btn">
+                                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 - Infraestructura -->
+                    <div class="motivo-card">
+                        <div class="motivo-card-img">
+                            <svg viewBox="0 0 290 380" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="290" height="380" fill="#c8c0b8"/>
+                                <!-- Modern corridor / architecture -->
+                                <rect x="0" y="0" width="290" height="380" fill="#b8b0a8"/>
+                                <!-- Circular architecture ceiling -->
+                                <circle cx="145" cy="100" r="120" fill="none" stroke="rgba(200,195,185,0.8)" stroke-width="12"/>
+                                <circle cx="145" cy="100" r="90" fill="none" stroke="rgba(200,195,185,0.6)" stroke-width="10"/>
+                                <circle cx="145" cy="100" r="60" fill="none" stroke="rgba(200,195,185,0.4)" stroke-width="8"/>
+                                <circle cx="145" cy="100" r="30" fill="rgba(180,175,165,0.5)"/>
+                                <!-- Student with tablet -->
+                                <circle cx="200" cy="250" r="22" fill="#c49464"/>
+                                <rect x="178" y="270" width="44" height="55" rx="8" fill="#2a2a2a"/>
+                                <!-- Tablet in hand -->
+                                <rect x="210" y="280" width="30" height="40" rx="4" fill="#444"/>
+                                <rect x="213" y="284" width="24" height="32" rx="2" fill="#88b8d8"/>
+                                <!-- Floor -->
+                                <rect x="0" y="330" width="290" height="50" fill="rgba(0,0,0,0.08)"/>
+                            </svg>
+                            <div class="motivo-card-overlay">
+                                <div class="motivo-icon">
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="8" y="20" width="32" height="20" rx="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="24" cy="30" r="6" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="24" cy="30" r="2" fill="#00BFA6"/>
+                                        <path d="M14 8 L24 4 L34 8" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <line x1="24" y1="4" x2="24" y2="14" stroke="#00BFA6" stroke-width="2"/>
+                                        <circle cx="14" cy="12" r="3" fill="none" stroke="#00BFA6" stroke-width="1.5"/>
+                                        <circle cx="34" cy="12" r="3" fill="none" stroke="#00BFA6" stroke-width="1.5"/>
+                                        <!-- Connection dots -->
+                                        <circle cx="8" cy="44" r="2" fill="#00BFA6"/>
+                                        <circle cx="16" cy="44" r="2" fill="#00BFA6"/>
+                                        <circle cx="24" cy="44" r="2" fill="#00BFA6"/>
+                                        <circle cx="32" cy="44" r="2" fill="#00BFA6"/>
+                                        <circle cx="40" cy="44" r="2" fill="#00BFA6"/>
+                                    </svg>
+                                </div>
+                                <h3>La infraestructura y tecnología más moderna del mercado</h3>
+                            </div>
+                            <div class="motivo-btn">
+                                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 - Becas -->
+                    <div class="motivo-card">
+                        <div class="motivo-card-img">
+                            <svg viewBox="0 0 290 380" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="290" height="380" fill="#d8e8e0"/>
+                                <!-- Graduation scene -->
+                                <rect x="0" y="260" width="290" height="120" fill="#c8d8c8"/>
+                                <!-- Graduation cap -->
+                                <polygon points="145,60 80,95 145,130 210,95" fill="#1a1a1a"/>
+                                <rect x="140" y="55" width="10" height="5" rx="2" fill="#F7941D"/>
+                                <line x1="210" y1="95" x2="210" y2="140" stroke="#1a1a1a" stroke-width="2"/>
+                                <rect x="205" y="138" width="10" height="8" rx="2" fill="#F7941D"/>
+                                <!-- Students celebrating -->
+                                <circle cx="100" cy="180" r="22" fill="#c49464"/>
+                                <rect x="78" y="200" width="44" height="55" rx="8" fill="#1a3a6a"/>
+                                <circle cx="190" cy="175" r="22" fill="#d4a574"/>
+                                <rect x="168" y="195" width="44" height="55" rx="8" fill="#E4002B"/>
+                                <circle cx="145" cy="190" r="20" fill="#8B6914"/>
+                                <rect x="125" y="208" width="40" height="50" rx="6" fill="#2a5a3a"/>
+                            </svg>
+                            <div class="motivo-card-overlay">
+                                <div class="motivo-icon">
+                                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="14" y="10" width="20" height="28" rx="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <line x1="20" y1="18" x2="28" y2="18" stroke="#00BFA6" stroke-width="1.5"/>
+                                        <line x1="20" y1="24" x2="28" y2="24" stroke="#00BFA6" stroke-width="1.5"/>
+                                        <line x1="20" y1="30" x2="28" y2="30" stroke="#00BFA6" stroke-width="1.5"/>
+                                        <circle cx="24" cy="44" r="3" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                        <path d="M18 42 L24 38 L30 42" fill="none" stroke="#00BFA6" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h3>Becas y apoyo económico para tu formación</h3>
+                            </div>
+                            <div class="motivo-btn">
+                                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation arrows -->
+                <div class="motivos-nav">
+                    <div class="motivos-arrow" onclick="scrollMotivos(-1)">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                    </div>
+                    <div class="motivos-arrow" onclick="scrollMotivos(1)">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ALUMNOS SECTION ========== -->
+    <section class="alumnos-section">
+        <div class="alumnos-inner">
+            <div class="alumnos-title-row">
+                <div class="alumnos-accent"></div>
+                <h2>Nuestros alumnos destacados</h2>
+            </div>
+            <p class="alumnos-desc">
+                Conoce a quienes están construyendo su futuro profesional con nosotros. Talento, esfuerzo y la formación UTP que marca la diferencia.
+            </p>
+
+            <div class="alumnos-grid">
+                <!-- Carlos Yamacho -->
+                <div class="alumno-card">
+                    <div class="alumno-utp-badge">UTP</div>
+                    <div class="alumno-action">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <div class="alumno-card-img">
+                        <img src="https://i.postimg.cc/nVmYVvTm/yamac1024.png" alt="Carlos Yamacho" loading="lazy">
+                        <div class="alumno-card-overlay">
+                            <h3>Carlos Yamacho</h3>
+                            <p class="alumno-carrera">Estudiante UTP</p>
+                            <p class="alumno-quote">"La UTP me dio las herramientas para desarrollarme profesionalmente y alcanzar mis metas."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gabriel Sedano -->
+                <div class="alumno-card">
+                    <div class="alumno-utp-badge">UTP</div>
+                    <div class="alumno-action">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <div class="alumno-card-img">
+                        <img src="https://i.postimg.cc/8cYqbLJR/Gemini-Generated-Image-5rt2635rt2635rt2.png" alt="Gabriel Sedano" loading="lazy">
+                        <div class="alumno-card-overlay">
+                            <h3>Gabriel Sedano</h3>
+                            <p class="alumno-carrera">Estudiante UTP</p>
+                            <p class="alumno-quote">"Estudiar en la UTP me permitió conectar con empresas desde el primer ciclo y crecer profesionalmente."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jared Alarcon -->
+                <div class="alumno-card">
+                    <div class="alumno-utp-badge">UTP</div>
+                    <div class="alumno-action">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <div class="alumno-card-img">
+                        <img src="https://i.postimg.cc/85VjPrZ7/jared1024.png" alt="Jared Alarcon" loading="lazy">
+                        <div class="alumno-card-overlay">
+                            <h3>Jared Alarcon</h3>
+                            <p class="alumno-carrera">Estudiante UTP</p>
+                            <p class="alumno-quote">"La formación práctica y los docentes expertos de la UTP me prepararon para el mundo laboral real."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== INTERCORP SECTION ========== -->
+    <section class="intercorp-section">
+        <div class="intercorp-inner">
+            <div class="intercorp-title-row">
+                <div class="intercorp-accent"></div>
+                <h2>Somos parte de Intercorp</h2>
+            </div>
+            <p class="intercorp-desc">
+                Con el respaldo del Grupo Intercorp, el grupo empresarial más grande del país, aprende con profesionales del sector y crece en un entorno lleno de oportunidades.
+            </p>
+
+            <!-- Logos -->
+            <div class="intercorp-logos">
+                <!-- Interbank -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="10" width="20" height="20" rx="3" fill="#0D5F2C"/>
+                        <rect x="6" y="14" width="5" height="5" rx="1" fill="#fff"/>
+                        <rect x="13" y="14" width="5" height="5" rx="1" fill="#fff"/>
+                        <rect x="6" y="21" width="5" height="5" rx="1" fill="#fff"/>
+                        <rect x="13" y="21" width="5" height="5" rx="1" fill="#00A94F"/>
+                        <text x="28" y="26" font-family="Montserrat,sans-serif" font-weight="700" font-size="13" fill="#0D5F2C">Interbank</text>
+                    </svg>
+                </div>
+
+                <!-- Plaza Vea -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="5" y="28" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#E4002B">plaza</text>
+                        <text x="65" y="28" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#FFD100">V</text>
+                        <text x="77" y="28" font-family="Montserrat,sans-serif" font-weight="800" font-size="16" fill="#00A94F">ea</text>
+                    </svg>
+                </div>
+
+                <!-- Oechsle -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 120 45" xmlns="http://www.w3.org/2000/svg">
+                        <text x="10" y="25" font-family="Montserrat,sans-serif" font-weight="900" font-size="24" fill="#E4002B">oe</text>
+                        <text x="10" y="40" font-family="Montserrat,sans-serif" font-weight="700" font-size="14" fill="#E4002B">oechsle</text>
+                    </svg>
+                </div>
+
+                <!-- Real Plaza -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 130 45" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="28" cy="18" r="14" fill="none" stroke="#7B1FA2" stroke-width="2.5"/>
+                        <path d="M20 18 Q24 8 28 14 Q32 8 36 18" fill="none" stroke="#7B1FA2" stroke-width="2"/>
+                        <text x="6" y="42" font-family="Montserrat,sans-serif" font-weight="800" font-size="10" fill="#7B1FA2" letter-spacing="1.5">REAL PLAZA</text>
+                    </svg>
+                </div>
+
+                <!-- Innova Schools -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="14" cy="20" r="10" fill="none" stroke="#00A94F" stroke-width="2.5"/>
+                        <path d="M10 20 Q14 12 18 20" fill="none" stroke="#FFD100" stroke-width="2"/>
+                        <text x="30" y="18" font-family="Montserrat,sans-serif" font-weight="800" font-size="11" fill="#1a1a1a">Innova</text>
+                        <text x="30" y="30" font-family="Montserrat,sans-serif" font-weight="600" font-size="10" fill="#00A94F">Schools</text>
+                    </svg>
+                </div>
+
+                <!-- Vivanda -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+                        <text x="5" y="24" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="20" fill="#E4002B">Vivanda</text>
+                        <text x="18" y="36" font-family="Georgia,serif" font-style="italic" font-size="8" fill="#00A94F">piensa fresco</text>
+                    </svg>
+                </div>
+
+                <!-- Inkafarma -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 130 40" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="10" width="115" height="22" rx="4" fill="#FFD100"/>
+                        <circle cx="16" cy="21" r="5" fill="#fff"/>
+                        <circle cx="16" cy="21" r="3" fill="#00A94F"/>
+                        <text x="26" y="25" font-family="Montserrat,sans-serif" font-weight="800" font-size="11" fill="#1a1a1a">Inkafarma</text>
+                    </svg>
+                </div>
+
+                <!-- Cineplanet -->
+                <div class="intercorp-logo">
+                    <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="20" r="12" fill="#1a1a6a"/>
+                        <circle cx="16" cy="20" r="5" fill="#00BFA6"/>
+                        <circle cx="16" cy="20" r="2" fill="#fff"/>
+                        <text x="34" y="25" font-family="Montserrat,sans-serif" font-weight="700" font-size="14" fill="#1a1a6a">cineplanet</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="intercorp-dots">
+                <div class="intercorp-dot active"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+                <div class="intercorp-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FLOATING BUTTONS ========== -->
+    <div class="floating-btns">
+        <!-- Edit / Inscríbete -->
+        <div class="float-btn red">
+            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        </div>
+        <!-- WhatsApp -->
+        <div class="float-btn green">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <!-- Menu / Lista -->
+        <div class="float-btn gray">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+    </div>
+
+    <script>
+        // ===== Phone Video Play/Pause =====
+        const phoneVideo = document.getElementById('testimonioVideo');
+        const phonePlayBtn = document.getElementById('phonePlayBtn');
+        let videoPlaying = false;
+
+        phonePlayBtn.addEventListener('click', function() {
+            if (videoPlaying) {
+                phoneVideo.pause();
+                phonePlayBtn.style.opacity = '1';
+                videoPlaying = false;
+            } else {
+                phoneVideo.muted = false;
+                phoneVideo.play();
+                phonePlayBtn.style.opacity = '0';
+                videoPlaying = true;
+            }
+        });
+
+        // Show play button again when video ends or is paused
+        phoneVideo.addEventListener('pause', () => {
+            phonePlayBtn.style.opacity = '1';
+            videoPlaying = false;
+        });
+
+        // Click anywhere on screen to pause
+        document.querySelector('.phone-screen').addEventListener('click', function(e) {
+            if (e.target === this || e.target.closest('.phone-video-bg')) {
+                if (videoPlaying) {
+                    phoneVideo.pause();
+                    phonePlayBtn.style.opacity = '1';
+                    videoPlaying = false;
+                }
+            }
+        });
+
+        // ===== Motivos Carousel =====
+        function scrollMotivos(dir) {
+            const motivosCarousel = document.getElementById('motivosCarousel');
+            motivosCarousel.scrollBy({ left: dir * 314, behavior: 'smooth' });
+        }
+
+        // ===== Campus Carousel =====
+        const carousel = document.getElementById('campusCarousel');
+        const totalCards = carousel.querySelectorAll('.campus-card').length;
+        const dotsContainer = document.getElementById('campusDots');
+        let currentPage = 0;
+
+        // Create dots
+        for (let i = 0; i < totalCards; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'campus-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => scrollToCard(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        function scrollCampus(dir) {
+            const cardWidth = 404; // card width + gap
+            carousel.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+        }
+
+        function scrollToCard(index) {
+            const cardWidth = 404;
+            carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+        }
+
+        // Update dots on scroll
+        carousel.addEventListener('scroll', () => {
+            const scrollPos = carousel.scrollLeft;
+            const cardWidth = 404;
+            const activeIndex = Math.round(scrollPos / cardWidth);
+            document.querySelectorAll('.campus-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === activeIndex);
+            });
+        });
+
+        // Accordion toggle
+        function toggleAccordion(name) {
+            const card = document.querySelector(`[data-accordion="${name}"]`);
+            const isActive = card.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.accordion-card').forEach(c => c.classList.remove('active'));
+            // Open clicked if it wasn't active
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+
+        // Play button click
+        document.getElementById('playBtn').addEventListener('click', function() {
+            alert('▶ Video institucional UTP\n\nAquí se abriría el video institucional de la universidad.');
+        });
+
+        // Hover effects on carreras icons
+        document.querySelectorAll('.carrera-icon-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.querySelector('.carrera-icon-circle').style.background = '#E4002B';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.querySelector('.carrera-icon-circle').style.background = '#1a1a1a';
+            });
+        });
+
+        // Dropdown toggle simulation for nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Toggle active state
+                document.querySelectorAll('.nav-item').forEach(i => i.style.background = '');
+                this.style.background = 'rgba(255,255,255,0.15)';
+            });
+        });
+
+        // Floating button actions
+        document.querySelectorAll('.float-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.classList.contains('green')) {
+                    window.open('https://wa.me/5111234567', '_blank');
+                } else if (this.classList.contains('red')) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Admision form - Siguiente button
+        document.getElementById('btnSiguiente').addEventListener('click', function() {
+            const nombre = document.querySelector('.admision-form-card input[placeholder="Nombre*"]').value;
+            const apellido = document.querySelector('.admision-form-card input[placeholder="Apellido*"]').value;
+            const celular = document.querySelector('.admision-form-card input[placeholder="Celular*"]').value;
+            const dni = document.querySelector('.admision-form-card input[placeholder="DNI*"]').value;
+            const correo = document.querySelector('.admision-form-card input[placeholder="Correo electrónico*"]').value;
+            const checkbox = document.getElementById('privacidad').checked;
+
+            if (!nombre || !apellido || !celular || !dni || !correo) {
+                // Highlight empty fields
+                document.querySelectorAll('.admision-form-card input[type="text"], .admision-form-card input[type="tel"], .admision-form-card input[type="email"]').forEach(input => {
+                    if (!input.value) {
+                        input.style.borderColor = '#E4002B';
+                        setTimeout(() => { input.style.borderColor = '#ccc'; }, 2000);
+                    }
+                });
+                return;
+            }
+
+            if (!checkbox) {
+                document.getElementById('privacidad').style.borderColor = '#E4002B';
+                setTimeout(() => { document.getElementById('privacidad').style.borderColor = '#ccc'; }, 2000);
+                return;
+            }
+
+            // Success - show step 2 simulation
+            this.textContent = '✓ Enviado';
+            this.style.background = 'linear-gradient(135deg, #43e97b, #38f9d7)';
+            const stepEl = document.querySelector('.form-step');
+            stepEl.innerHTML = '<strong>2</strong><span>/2</span>';
+            setTimeout(() => {
+                this.innerHTML = 'Siguiente <span class="arrow-icon">→</span>';
+                this.style.background = '';
+                stepEl.innerHTML = '<strong>1</strong><span>/2</span>';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
