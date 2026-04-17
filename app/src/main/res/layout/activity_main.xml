@@ -6,37 +6,248 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#080C18"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AGENCIA DE VIas33asAJES PA2323git add .RADOR"
-        android:textSize="20sp"
-        android:layout_margin="20dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imgBus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="80dp"
-        android:src="@drawable/bus"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
 
-    <Button
-        android:id="@+id/btnAcceso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acceso"
-        app:layout_constraintTop_toBottomOf="@id/imgBus"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="48dp"
+                android:paddingHorizontal="24dp">
+
+                <!-- Badge premium -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✦  TRANSPORTE PREMIUM"
+                    android:textSize="11sp"
+                    android:textColor="#00E5FF"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:background="@drawable/badge_cyan"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Bus card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="#0D1628"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/imgBus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/bus"
+                        android:scaleType="fitCenter"
+                        android:padding="16dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/txtTitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AGENCIA PARADOR"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:letterSpacing="0.1"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="6dp"/>
+
+                <!-- Subtítulo -->
+                <TextView
+                    android:id="@+id/txtSubtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TU VIAJE  ·  NUESTRA MISIÓN"
+                    android:textSize="12sp"
+                    android:textColor="#8899AA"
+                    android:letterSpacing="0.2"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Stats row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/stat_card"
+                        android:padding="12dp"
+                        android:layout_marginEnd="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="48+"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#00E5FF"
+                            android:fontFamily="monospace"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RUTAS"
+                            android:textSize="10sp"
+                            android:textColor="#AABBCC"
+                            android:letterSpacing="0.2"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/stat_card"
+                        android:padding="12dp"
+                        android:layout_marginHorizontal="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12K"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#00E5FF"
+                            android:fontFamily="monospace"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="VIAJEROS"
+                            android:textSize="10sp"
+                            android:textColor="#AABBCC"
+                            android:letterSpacing="0.2"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/stat_card"
+                        android:padding="12dp"
+                        android:layout_marginStart="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15Y"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#00E5FF"
+                            android:fontFamily="monospace"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AÑOS"
+                            android:textSize="10sp"
+                            android:textColor="#AABBCC"
+                            android:letterSpacing="0.2"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Línea separadora -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#00E5FF33"
+                android:layout_marginVertical="24dp"/>
+
+            <!-- BODY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp">
+
+                <!-- Descripción -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bienvenido a Parador, tu agencia de transporte de confianza. Viaja seguro y cómodo a tu destino."
+                    android:textSize="14sp"
+                    android:textColor="#AABBCC"
+                    android:gravity="center"
+                    android:lineSpacingExtra="6dp"
+                    android:layout_marginBottom="24dp"/>
+
+                <!-- Botón INGRESAR -->
+                <Button
+                    android:id="@+id/btnAcceso"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="⟶  INGRESAR"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="#080C18"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:backgroundTint="#00E5FF"
+                    android:layout_marginBottom="12dp"
+                    app:cornerRadius="14dp"/>
+
+                <!-- Botón CREAR CUENTA -->
+                <Button
+                    android:id="@+id/btnRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="CREAR CUENTA"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:letterSpacing="0.2"
+                    android:backgroundTint="#1A2540"
+                    app:strokeColor="#00E5FF55"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="14dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+            </LinearLayout>
+
+            <!-- Footer -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2024 PARADOR · TODOS LOS DERECHOS RESERVADOS"
+                android:textSize="10sp"
+                android:textColor="#445566"
+                android:gravity="center"
+                android:letterSpacing="0.1"
+                android:fontFamily="monospace"
+                android:layout_marginTop="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
